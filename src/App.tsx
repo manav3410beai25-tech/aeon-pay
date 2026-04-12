@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import jsQR from 'jsqr';
 import { 
-  LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, AreaChart, Area, CartesianGrid 
+  Tooltip, ResponsiveContainer, AreaChart, Area 
 } from 'recharts';
 import { 
-  ScanLine, Send, Landmark, SmartphoneNfc, History, Wallet,
-  WifiOff, BellRing, Bot, Zap, ChevronRight, CreditCard,
-  Briefcase, ArrowLeft, MessageSquare, Camera, X, PlusCircle,
-  Building, CheckCircle2, Globe, LogOut, Settings, LogIn
+  ScanLine, Send, Landmark, SmartphoneNfc, Wallet,
+  WifiOff, BellRing, Bot, Zap, CreditCard,
+  Briefcase, ArrowLeft, Camera, X, PlusCircle,
+  Building, CheckCircle2, Globe, LogOut, Settings
 } from 'lucide-react';
 import './index.css';
 
@@ -35,7 +35,7 @@ export default function App() {
   // Balances & Transactions
   const [walletBalance, setWalletBalance] = useState(14500.00);
   const [vaultBalance, setVaultBalance] = useState(2500.00);
-  const [banks, setBanks] = useState(['State Bank of India - •••• 5678']);
+  const [banks] = useState(['State Bank of India - •••• 5678']);
   const [transactions, setTransactions] = useState<Transaction[]>([
     { id: '1', target: 'Starbucks Cafe', date: 'Today, 9:24 AM', amount: 450, type: 'debit' },
     { id: '2', target: 'Vignesh (Split)', date: 'Yesterday', amount: 800, type: 'credit' }
@@ -54,7 +54,7 @@ export default function App() {
   const [refillAmount, setRefillAmount] = useState('');
 
   // Scanner
-  const [qrStatus, setQrStatus] = useState<string>('Searching for QR code...');
+  const [_qrStatus, _setQrStatus] = useState<string>('Searching for QR code...');
 
   const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   useEffect(() => scrollToBottom(), [messages]);
